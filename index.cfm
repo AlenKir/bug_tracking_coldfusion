@@ -3,6 +3,6 @@
   Please Sign Up!
 <cfelse>
   <cfoutput>
-      Username: #Session.Username#
+      Welcome, #Session.Username#!
   </cfoutput>
 </cfif>
