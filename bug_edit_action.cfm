@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Check. Bug entry</title>
+    <title>Edited Bug Entry</title>
 </head>
 
 <body>
@@ -38,7 +38,11 @@
     </h2>
 
     <cfquery name="add_bug" datasource="getit">
-        insert into bugs (bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, bug_whenfound) values ('#form.fld_description#', '#form.fld_details#', 1, '#form.fld_status#', '#form.fld_urgency#', '#form.fld_crit#', '2021-06-22')
+       update bugs set bug_title='#form.fld_description#',
+       bug_details='#form.fld_details#', creator_id=1,
+       bug_status='#form.fld_status#', bug_urgency='#form.fld_urgency#',
+       bug_crit='#form.fld_crit#', bug_whenfound='2021-06-22'
+       where bug_id=#form.fld_bug_id#
     </cfquery>
 
         <form action="list_of_bugs.cfm" method="get">
