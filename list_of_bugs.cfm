@@ -20,6 +20,9 @@
             <button name="fld_id" value="#bugs_list.bug_id#">EDIT</button>
         </form>
         <hr>
+        <form action="bug.cfm" method="get">
+            <button name="fld_id" value="#bugs_list.bug_id#">ADD</button>
+        </form>
     </cfoutput>
 </body>
 
