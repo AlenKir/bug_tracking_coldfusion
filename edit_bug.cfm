@@ -29,12 +29,14 @@
 
     <h2>History:</h2>
     <cfquery name="changes_list" datasource="getit">
-        select change_id, bug_id, changer_id, change_action, change_comment, change_date
-        from changes where bug_id=#form.fld_id#
+        select * from changes 
+        inner join users
+        on changes.changer_id=users.user_id
+        where bug_id=#form.fld_id#
     </cfquery>
 
     <cfoutput query="changes_list">
-        #changes_list.change_action#, #changes_list.change_comment#, #changes_list.change_date#<br>
+        #changes_list.username#, #changes_list.change_action#, #changes_list.change_comment#, #changes_list.change_date#<br>
     </cfoutput>
 
     <hr>
@@ -44,7 +46,7 @@
         <form id="frm_enterBugForm" name="frm_enterBugForm" method="post" action="bug_edit_action.cfm">
             <p>
                 <label for="fld_description">Short Description</label>
-                <input type="text" name="fld_description" id="fld_description" />
+                <input type="text" name="fld_description" id="fld_description" value="#bugs_list.bug_title#"/>
             </p>
             <p>
                 <label for="fld_details">Long Description</label>
