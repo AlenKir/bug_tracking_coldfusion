@@ -1,38 +1,60 @@
--- Database: getit
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS bugs CASCADE;
+DROP TABLE IF EXISTS changes;
 
--- DROP DATABASE getit;
-
-CREATE DATABASE getit
-    WITH 
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'Russian_Russia.1251'
-    LC_CTYPE = 'Russian_Russia.1251'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
-	
 CREATE TABLE users (
-	user_id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	username TEXT UNIQUE,
+	user_id INT GENERATED ALWAYS AS IDENTITY,
+	username TEXT UNIQUE NOT NULL,
 	firstlastname TEXT,
-	user_password TEXT NOT NULL
+	user_password TEXT NOT NULL,
+	PRIMARY KEY(user_id)
 );
 
--- Table: public.users
+CREATE TABLE bugs (
+	bug_id INT GENERATED ALWAYS AS IDENTITY,
+	bug_title TEXT NOT NULL,
+	bug_details TEXT,
+	creator_id INT,
+	bug_status TEXT NOT NULL,
+	bug_urgency TEXT NOT NULL,
+	bug_crit TEXT NOT NULL,
+	bug_whenfound DATE,
+	
+	PRIMARY KEY(bug_id),
+    CONSTRAINT fk_user
+      FOREIGN KEY(creator_id) 
+	  REFERENCES users(user_id)
+);
 
--- DROP TABLE public.users;
+CREATE TABLE changes(
+	change_id INT GENERATED ALWAYS AS IDENTITY,
+	bug_id INT,
+	changer_id INT,
+	change_date DATE,
+	change_action TEXT,
+	change_comment TEXT,
+	
+	PRIMARY KEY(change_id),
+    CONSTRAINT fk_user
+      FOREIGN KEY(changer_id) 
+	  REFERENCES users(user_id),
+	CONSTRAINT fk_bug
+      FOREIGN KEY(bug_id) 
+	  REFERENCES bugs(bug_id)
+);
 
-CREATE TABLE public.users
-(
-    user_id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
-    username text COLLATE pg_catalog."default",
-    firstlastname text COLLATE pg_catalog."default",
-    user_password text COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT users_pkey PRIMARY KEY (user_id),
-    CONSTRAINT users_username_key UNIQUE (username)
-)
 
-TABLESPACE pg_default;
 
-ALTER TABLE public.users
-    OWNER to postgres;
+INSERT INTO users 
+(username, firstlastname, user_password)
+VALUES 
+('test', 'Test Test', 'test');
+
+INSERT INTO bugs 
+(bug_title, bug_details, creator_id, bug_status, 
+ bug_urgency, bug_crit, bug_whenfound)
+VALUES ('testbug', 'details', 1, 'New', 'Very', 'Request', '2021-06-22');
+
+INSERT INTO changes 
+(bug_id, changer_id, change_date, change_action, change_comment)
+VALUES (1, 1, '2021-06-22', 'Closed', 'No Comment');

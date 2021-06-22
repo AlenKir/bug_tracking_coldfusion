@@ -3,10 +3,20 @@
 
 <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <title>Edited Bug Entry</title>
 </head>
 
 <body>
+
+    <nav>
+        <a href="signup.cfm">SIGN UP</a> | <a href="signin.cfm">SIGN IN</a> |
+        <a href="list_of_bugs.cfm">BUGS</a> | <a href="history.cfm">HISTORY</a> | <a href="signout.cfm">SIGN OUT</a>
+    </nav>
+
+    <hr>
+
     <h2>
         <cfoutput>
             <p>
@@ -46,7 +56,7 @@
     </cfquery>
 
     <cfquery name="change" datasource="getit">
-       INSERT INTO changes (bug_id, changer_id, change_date, change_action, change_comment) VALUES (#form.fld_bug_id#, 1, '2021-06-22', '#form.fld_status#', '#form.fld_comment#');
+        INSERT INTO changes (bug_id, changer_id, change_date, change_action, change_comment) VALUES (#form.fld_bug_id#, 1, '2021-06-22', '#form.fld_status#', '#form.fld_comment#');
     </cfquery>
 
     <form action="list_of_bugs.cfm" method="get">
