@@ -17,24 +17,34 @@
 
     <hr>
 
+    <cfquery name="bugs_list" datasource="getit">
+        select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit
+        from bugs where bug_id=#form.fld_id#
+    </cfquery>
+
     <cfoutput>
+        <strong>Short Description:</strong> #bugs_list.bug_title#, <br> <strong>Details:</strong> #bugs_list.bug_details#, <br> <strong>Status:</strong> #bugs_list.bug_status#, <strong>Urgency:</strong> #bugs_list.bug_urgency#, <strong>Cricicality: </strong>#bugs_list.bug_crit#<br>
+        <hr>
+    </cfoutput>
 
-        <cfquery name="bugs_list" datasource="getit">
-            select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit
-            from bugs where bug_id=#form.fld_id#
-        </cfquery>
+    <h2>History:</h2>
+    <cfquery name="changes_list" datasource="getit">
+        select change_id, bug_id, changer_id, change_action, change_comment, change_date
+        from changes where bug_id=#form.fld_id#
+    </cfquery>
 
-        <cfoutput>
-            <strong>Short Description:</strong> #bugs_list.bug_title#, <br> <strong>Details:</strong> #bugs_list.bug_details#, <br> <strong>Status:</strong> #bugs_list.bug_status#, <strong>Urgency:</strong> #bugs_list.bug_urgency#, <strong>Cricicality: </strong>#bugs_list.bug_crit#<br>
-            <hr>
-        </cfoutput>
+    <cfoutput query="changes_list">
+        #changes_list.change_action#, #changes_list.change_comment#, #changes_list.change_date#<br>
+    </cfoutput>
 
-        <h2>Change to:</h2>
+    <hr>
 
+    <h2>Change to:</h2>
+    <cfoutput>
         <form id="frm_enterBugForm" name="frm_enterBugForm" method="post" action="bug_edit_action.cfm">
             <p>
                 <label for="fld_description">Short Description</label>
-                <input type="text" name="fld_description" id="fld_description" value="#bugs_list.bug_title#" />
+                <input type="text" name="fld_description" id="fld_description" />
             </p>
             <p>
                 <label for="fld_details">Long Description</label>
@@ -70,10 +80,8 @@
             </p>
 
         </form>
-
-        <!--        select where bug id-->
-        <!--   print out where bug id-->
     </cfoutput>
+
 </body>
 
 </html>
