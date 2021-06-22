@@ -24,30 +24,41 @@
         <form id="frm_enterBugForm" name="frm_enterBugForm" method="post" action="bug_edit_action.cfm">
             <p>
                 <label for="fld_description">Short Description</label>
-                <input type="text" name="fld_description" id="fld_description" />
+                <input type="text" name="fld_description" id="fld_description" value="#bugs_list.bug_title#" />
             </p>
             <p>
                 <label for="fld_details">Long Description</label>
-                <textarea rows="3" cols="45" name="fld_details" id="fld_details"></textarea>
+                <textarea rows="3" cols="45" name="fld_details" id="fld_details">#bugs_list.bug_details#</textarea>
             </p>
+
             <p>
-                <label for="fld_status">Status (New, Open, Solved, Closed)</label>
-                <input type="text" name="fld_status" id="fld_status" />
+                <label for="fld_status">Updated Status (New/Open/Solved/Closed):</label>
+                <input type="text" name="fld_status" id="fld_status" value="#bugs_list.bug_status#" />
             </p>
             <p>
                 <label for="fld_urgency">Urgent? (Very, Urgent, Non-urgent, No)</label>
-                <input type="text" name="fld_urgency" id="fld_urgency" />
+                <input type="text" name="fld_urgency" id="fld_urgency" value="#bugs_list.bug_urgency#" />
             </p>
             <p>
                 <label for="fld_crit">Critical? (Crisis, Critical, Non-critical, Request)</label>
-                <input type="text" name="fld_crit" id="fld_crit" />
+                <input type="text" name="fld_crit" id="fld_crit" value="#bugs_list.bug_crit#" />
             </p>
-            <p>
-                <input type="submit" name="fld_submitBugForm" id="fld_submitBugForm" value="Submit" />
-            </p>
+
             <div style="display:none">
                 <input type="text" name="fld_bug_id" value="#form.fld_id#" />
             </div>
+
+            <hr>
+
+            <p>
+                <label for="fld_comment">Note:</label>
+                <textarea rows="3" cols="45" name="fld_comment" id="fld_comment"></textarea>
+            </p>
+
+            <p>
+                <input type="submit" name="fld_submitBugForm" id="fld_submitBugForm" value="Submit" />
+            </p>
+
         </form>
 
         <!--        select where bug id-->
