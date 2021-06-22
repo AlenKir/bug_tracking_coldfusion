@@ -34,6 +34,11 @@
             Critical? #form.fld_crit#.
         </p>
     </cfoutput>
+
+    <cfquery name="add_bug" datasource="getit">
+        insert into bugs (bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, bug_whenfound) values ('#form.fld_description#', '#form.fld_details#', 1, '#form.fld_status#', '#form.fld_urgency#', '#form.fld_crit#', '2021-06-22')
+    </cfquery>
+
 </body>
 
 </html>
