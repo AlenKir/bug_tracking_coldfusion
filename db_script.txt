@@ -1,0 +1,38 @@
+-- Database: getit
+
+-- DROP DATABASE getit;
+
+CREATE DATABASE getit
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Russian_Russia.1251'
+    LC_CTYPE = 'Russian_Russia.1251'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+	
+CREATE TABLE users (
+	user_id INT NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	username TEXT UNIQUE,
+	firstlastname TEXT,
+	user_password TEXT NOT NULL
+);
+
+-- Table: public.users
+
+-- DROP TABLE public.users;
+
+CREATE TABLE public.users
+(
+    user_id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    username text COLLATE pg_catalog."default",
+    firstlastname text COLLATE pg_catalog."default",
+    user_password text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT users_pkey PRIMARY KEY (user_id),
+    CONSTRAINT users_username_key UNIQUE (username)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.users
+    OWNER to postgres;
