@@ -11,18 +11,22 @@
 <body>
 
     <cfquery name="bugs_list" datasource="getit">
-        select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit
-        from bugs where bug_id=#form.fld_id#
+        select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, username as bug_creator
+        from bugs
+        left join users
+        on creator_id = users.user_id
+        where bug_id=#form.fld_id#
     </cfquery>
 
     <cfoutput>
         <strong>Short Description:</strong> #bugs_list.bug_title#, <br> <strong>Details:</strong> #bugs_list.bug_details#, <br> <strong>Status:</strong> #bugs_list.bug_status#, <strong>Urgency:</strong> #bugs_list.bug_urgency#, <strong>Cricicality: </strong>#bugs_list.bug_crit#<br>
+        <strong>Added by: </strong>#bugs_list.bug_creator#
         <hr>
     </cfoutput>
 
     <h2>History:</h2>
     <cfquery name="changes_list" datasource="getit">
-        select * from changes 
+        select * from changes
         inner join users
         on changes.changer_id=users.user_id
         where bug_id=#form.fld_id#
@@ -37,9 +41,15 @@
     <h2>Change to:</h2>
     <cfoutput>
         <form id="frm_enterBugForm" name="frm_enterBugForm" method="post" action="bug_edit_action.cfm">
+           
+            <p style="visibility: hidden">
+                <label for="fld_creator">Creator: </label>
+                <input type="text" name="fld_creator" id="fld_creator" value="#bugs_list.bug_creator#" />
+            </p>
+           
             <p>
                 <label for="fld_description">Short Description</label>
-                <input type="text" name="fld_description" id="fld_description" value="#bugs_list.bug_title#"/>
+                <input type="text" name="fld_description" id="fld_description" value="#bugs_list.bug_title#" />
             </p>
             <p>
                 <label for="fld_details">Long Description</label>
@@ -58,7 +68,8 @@
                 <label for="fld_crit">Critical? (Crisis, Critical, Non-critical, Request)</label>
                 <input type="text" name="fld_crit" id="fld_crit" value="#bugs_list.bug_crit#" />
             </p>
-
+            
+            
             <div style="display:none">
                 <input type="text" name="fld_bug_id" value="#form.fld_id#" />
             </div>
