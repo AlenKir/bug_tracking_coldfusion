@@ -12,13 +12,16 @@
 
     <h1>Bugs:</h1>
     <cfquery name="bugs_list" datasource="getit">
-        select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit
+        select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, username as bug_creator
         from bugs
+        left join users
+        on creator_id=users.user_id
     </cfquery>
 
     <cfoutput query="bugs_list">
         <!--       #bugs_list.bug_id#<br>-->
         <strong>Short Description:</strong> #bugs_list.bug_title#, <br> <strong>Details:</strong> #bugs_list.bug_details#, <br> <strong>Status:</strong> #bugs_list.bug_status#, <strong>Urgency:</strong> #bugs_list.bug_urgency#, <strong>Cricicality: </strong>#bugs_list.bug_crit#<br>
+        <strong>Added by: </strong>#bugs_list.bug_creator#
         <form action="edit_bug.cfm" method="post">
             <button name="fld_id" value="#bugs_list.bug_id#">EDIT</button>
         </form>
