@@ -9,12 +9,6 @@
 </head>
 
 <body>
-    <nav>
-        <a href="signup.cfm">SIGN UP</a> | <a href="signin.cfm">SIGN IN</a> |
-        <a href="list_of_bugs.cfm">BUGS</a> | <a href="history.cfm">HISTORY</a> | <a href="signout.cfm">SIGN OUT</a>
-    </nav>
-
-    <hr>
 
     <form id="frm_enterBugForm" name="frm_enterBugForm" method="post" action="bug_action.cfm">
         <p>

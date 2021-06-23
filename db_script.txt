@@ -32,7 +32,7 @@ CREATE TABLE changes(
 	changer_id INT,
 	change_date DATE,
 	change_action TEXT,
-	change_comment TEXT,
+	change_comment TEXT NOT NULL,
 	
 	PRIMARY KEY(change_id),
     CONSTRAINT fk_user

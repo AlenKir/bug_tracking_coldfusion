@@ -1,6 +1,6 @@
 <!--- checks to make sure user has permission to view this page. --->
-<cfif IsUserInRole("User")>
-...You can view this page...
+<cfif not IsUserInRole("User")>
+Not logged inn.
 <cfelse>
-...You can not view this page...    
+Logged in.
 </cfif>

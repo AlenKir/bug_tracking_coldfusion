@@ -10,13 +10,6 @@
 
 <body>
 
-    <nav>
-        <a href="signup.cfm">SIGN UP</a> | <a href="signin.cfm">SIGN IN</a> |
-        <a href="list_of_bugs.cfm">BUGS</a> | <a href="history.cfm">HISTORY</a> | <a href="signout.cfm">SIGN OUT</a>
-    </nav>
-
-    <hr>
-
     <cfquery name="bugs_list" datasource="getit">
         select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit
         from bugs where bug_id=#form.fld_id#

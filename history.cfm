@@ -10,14 +10,7 @@
 
 <body>
 
-    <nav>
-        <a href="signup.cfm">SIGN UP</a> | <a href="signin.cfm">SIGN IN</a> |
-        <a href="list_of_bugs.cfm">BUGS</a> | <a href="history.cfm">HISTORY</a> | <a href="signout.cfm">SIGN OUT</a>
-    </nav>
-
-    <hr>
-
-    <h1>History:</h1>
+    <h1>History of changes:</h1>
     <cfquery name="changes_list" datasource="getit">
         select * from changes
         inner join bugs
