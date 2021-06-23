@@ -9,28 +9,32 @@
 </head>
 
 <body>
+    <h3>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;Searching for: <cfoutput><i>#form.fld_search#</i></cfoutput>.
+    </p>
+    </h3>
 
-    <h1>Bugs:</h1>
-    
-    <hr>
-    <form action="bug_search_res.cfm" method="post">
-        <p>
-            <label for="fld_search">Search for: </label>
-            <input type="text" name="fld_search" id="fld_description" value="Crisis"/>
-        </p>
-        <button name="fld_id" value="#bugs_list.bug_id#"> SEARCH </button>
-    </form>
-    <hr>
-    
     <cfquery name="bugs_list" datasource="getit">
         select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, username as bug_creator
         from bugs
         left join users
         on creator_id=users.user_id
+        where 
+        position('#form.fld_search#' in bug_title)!=0
+        OR
+        position('#form.fld_search#' in bug_details)!=0
+        OR
+        position('#form.fld_search#' in bug_status)!=0
+        OR
+        position('#form.fld_search#' in bug_urgency)!=0
+        OR
+        position('#form.fld_search#' in bug_crit)!=0
+        OR
+        position('#form.fld_search#' in username)!=0
     </cfquery>
 
     <cfoutput query="bugs_list">
-        <!--       #bugs_list.bug_id#<br>-->
         <strong>Short Description:</strong> #bugs_list.bug_title#, <br> <strong>Details:</strong> #bugs_list.bug_details#, <br> <strong>Status:</strong> #bugs_list.bug_status#, <strong>Urgency:</strong> #bugs_list.bug_urgency#, <strong>Cricicality: </strong>#bugs_list.bug_crit#<br>
         <strong>Added by: </strong>#bugs_list.bug_creator#
         <form action="edit_bug.cfm" method="post">
@@ -38,9 +42,7 @@
         </form>
         <hr>
     </cfoutput>
-    <form action="bug.cfm" method="get">
-        <button name="fld_id" value="#bugs_list.bug_id#">ADD</button>
-    </form>
+
 </body>
 
 </html>
