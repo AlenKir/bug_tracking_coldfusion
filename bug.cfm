@@ -20,15 +20,15 @@
             <textarea rows="3" cols="45" name="fld_details" id="fld_details"></textarea>
         </p>
         <p>
-            <label for="fld_status">Status (New, Open, Solved, Closed)</label>
+            <label for="fld_status">Status (0 - New, 1 - Open, 2 - Solved, 3 - Closed)</label>
             <input type="text" name="fld_status" id="fld_status" />
         </p>
         <p>
-            <label for="fld_urgency">Urgent? (Very, Urgent, Non-urgent, No)</label>
+            <label for="fld_urgency">Urgent? (0 - Very, 1 - Urgent, 2 - Non-urgent, 3 - No)</label>
             <input type="text" name="fld_urgency" id="fld_urgency" />
         </p>
         <p>
-            <label for="fld_crit">Critical? (Crisis, Critical, Non-critical, Request)</label>
+            <label for="fld_crit">Critical? (0 - Crisis, 1 - Critical, 2 - Non-critical, 3 - Request)</label>
             <input type="text" name="fld_crit" id="fld_crit" />
         </p>
         <p>

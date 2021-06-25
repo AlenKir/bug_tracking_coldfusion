@@ -11,36 +11,52 @@
 <body>
 
     <h1>Bugs:</h1>
-    
-    <form action="sorted_bugs.cfm" method="post">Sort by:
-        <button style="background-color:Transparent;border: none;" name="fld_sortby" id="sortby" value="status"> Status </button>
-        <button style="background-color:Transparent;border: none;" name="fld_sortby" id="sortby" value="urgency"> Urgency </button>
-        <button style="background-color:Transparent;border: none;" name="fld_sortby" id="sortby" value="criticality"> Criticality </button>
-    </form>
-
-    <hr>
-    <form action="bug_search_res.cfm" method="post">
-        <p>
-            <label for="fld_search">Search for: </label>
-            <input type="text" name="fld_search" id="fld_description" />
-        </p>
-        <button name="fld_id" value="#bugs_list.bug_id#"> SEARCH </button>
-    </form>
     <hr>
 
-    <cfquery name="bugs_list" datasource="mygetit">
-        select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, username as bug_creator
-        from bugs
-        left join users
-        on creator_id=users.user_id
-    </cfquery>
+    <cfoutput>
+        Sorted by #form.fld_sortby#
+    </cfoutput>
+    <hr>
+
+    <cfswitch expression="#form.fld_sortby#">
+        <cfcase value="status">
+            <cfquery name="bugs_list" datasource="mygetit">
+                select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, username as bug_creator
+                from bugs
+                left join users
+                on creator_id=users.user_id
+                order by bug_status ASC
+            </cfquery>
+        </cfcase>
+        <cfcase value="urgency">
+            <cfquery name="bugs_list" datasource="mygetit">
+                select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, username as bug_creator
+                from bugs
+                left join users
+                on creator_id=users.user_id
+                order by bug_urgency ASC
+            </cfquery>
+        </cfcase>
+        <cfcase value="criticality">
+            <cfquery name="bugs_list" datasource="mygetit">
+                select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, username as bug_creator
+                from bugs
+                left join users
+                on creator_id=users.user_id
+                order by bug_crit ASC
+            </cfquery>
+        </cfcase>
+
+        <cfdefaultcase>Something went wrong.</cfdefaultcase>
+    </cfswitch>
 
     <cfoutput query="bugs_list">
+        <!--       #bugs_list.bug_id#<br>-->
         <strong>Short Description:</strong> #bugs_list.bug_title#, <br>
 
         <strong>Details:</strong> #bugs_list.bug_details#, <br>
 
-       <strong>Status:</strong>
+        <strong>Status:</strong>
         <cfswitch expression="#bugs_list.bug_status#">
             <cfcase value="0">New</cfcase>
             <cfcase value="1">Open</cfcase>
@@ -48,7 +64,7 @@
             <cfcase value="3">Closed</cfcase>
             <cfdefaultcase>Wrong status.</cfdefaultcase>
         </cfswitch>,
-        
+
         <strong>Urgency:</strong>
         <cfswitch expression="#bugs_list.bug_urgency#">
             <cfcase value="0">Very</cfcase>

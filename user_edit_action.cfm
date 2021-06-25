@@ -10,7 +10,7 @@
     </p>
 </cfoutput>
 
-    <cfquery name="update_user_info" datasource="getit">
+    <cfquery name="update_user_info" datasource="mygetit">
         update users set username='#form.fld_username#',
         firstlastname='#form.fld_firstlastname#',
         user_password='#form.fld_password#'

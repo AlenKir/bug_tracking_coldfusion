@@ -32,23 +32,23 @@
                 Status: #form.fld_status#.
             </p>
             <p>
-                Urgent? #form.fld_urgency#.
+                Urgent? [0:3] #form.fld_urgency#.
             </p>
             <p>
-                Critical? #form.fld_crit#.
+                Critical? [0:3] #form.fld_crit#.
             </p>
         </cfoutput>
     </h2>
     
     <cfset EmployeeID = ListFirst(GetAuthUser())>
-    <cfquery name="find_user_id" datasource="getit">
+    <cfquery name="find_user_id" datasource="mygetit">
         select user_id from users where username='#EmployeeID#'
     </cfquery>
     <cfoutput query="find_user_id">
         <cfset u_id=#find_user_id.user_id#>
     </cfoutput>
 
-    <cfquery name="add_bug" datasource="getit">
+    <cfquery name="add_bug" datasource="mygetit">
         insert into bugs (bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, bug_whenfound) values ('#form.fld_description#', '#form.fld_details#', #u_id#, '#form.fld_status#', '#form.fld_urgency#', '#form.fld_crit#', '2021-06-23')
     </cfquery>
 

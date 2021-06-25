@@ -10,7 +10,6 @@
 
 <body>
 
-    <h2>
         <cfoutput>
             <p>
                 <cfset DateToday=now()>
@@ -45,23 +44,22 @@
                 Changes by: #EmployeeID#.
             </p>
         </cfoutput>
-    </h2>
     
-    <cfquery name="find_changer_id" datasource="getit">
+    <cfquery name="find_changer_id" datasource="mygetit">
         select user_id from users where username='#EmployeeID#'
     </cfquery>
     <cfoutput query="find_changer_id">
         <cfset changer_id=#find_changer_id.user_id#>
     </cfoutput>
     
-    <cfquery name="find_creator_id" datasource="getit">
+    <cfquery name="find_creator_id" datasource="mygetit">
         select user_id from users where username='#form.fld_creator#'
     </cfquery>
     <cfoutput query="find_creator_id">
         <cfset creator_id=#find_creator_id.user_id#>
     </cfoutput>
 
-    <cfquery name="add_bug" datasource="getit">
+    <cfquery name="add_bug" datasource="mygetit">
         update bugs set bug_title='#form.fld_description#',
         bug_details='#form.fld_details#', creator_id=#creator_id#,
         bug_status='#form.fld_status#', bug_urgency='#form.fld_urgency#',
@@ -69,7 +67,7 @@
         where bug_id=#form.fld_bug_id#
     </cfquery>
 
-    <cfquery name="change" datasource="getit">
+    <cfquery name="change" datasource="mygetit">
         INSERT INTO changes (bug_id, changer_id, change_date, change_action, change_comment) VALUES (#form.fld_bug_id#, #changer_id#, '2021-06-23', '#form.fld_status#', '#form.fld_comment#');
     </cfquery>
 

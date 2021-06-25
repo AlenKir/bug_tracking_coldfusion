@@ -1,3 +1,5 @@
+-- Database: mygetit
+	
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS bugs CASCADE;
 DROP TABLE IF EXISTS changes;
@@ -15,9 +17,9 @@ CREATE TABLE bugs (
 	bug_title TEXT NOT NULL,
 	bug_details TEXT,
 	creator_id INT,
-	bug_status TEXT NOT NULL,
-	bug_urgency TEXT NOT NULL,
-	bug_crit TEXT NOT NULL,
+	bug_status INT NOT NULL,
+	bug_urgency INT NOT NULL,
+	bug_crit INT NOT NULL,
 	bug_whenfound DATE,
 	
 	PRIMARY KEY(bug_id),
@@ -31,7 +33,7 @@ CREATE TABLE changes(
 	bug_id INT,
 	changer_id INT,
 	change_date DATE,
-	change_action TEXT,
+	change_action INT NOT NULL,
 	change_comment TEXT NOT NULL,
 	
 	PRIMARY KEY(change_id),
@@ -53,8 +55,8 @@ VALUES
 INSERT INTO bugs 
 (bug_title, bug_details, creator_id, bug_status, 
  bug_urgency, bug_crit, bug_whenfound)
-VALUES ('testbug', 'details', 1, 'New', 'Very', 'Request', '2021-06-22');
+VALUES ('testbug', 'details', 1, 0, 0, 0, '2021-06-22');
 
 INSERT INTO changes 
 (bug_id, changer_id, change_date, change_action, change_comment)
-VALUES (1, 1, '2021-06-22', 'Closed', 'No Comment');
+VALUES (1, 1, '2021-06-22', 1, 'No Comment');

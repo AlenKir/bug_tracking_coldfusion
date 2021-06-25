@@ -1,5 +1,5 @@
 <h1>Users:</h1>
-<cfquery name = "users_list" datasource="getit">
+<cfquery name = "users_list" datasource="mygetit">
     select user_id, username, firstlastname, user_password
     from users
 </cfquery>
@@ -9,7 +9,7 @@
 </cfoutput>
 
 <h1>Bugs:</h1>
-<cfquery name = "bugs_list" datasource="getit">
+<cfquery name = "bugs_list" datasource="mygetit">
     select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit
     from bugs
 </cfquery>
@@ -19,7 +19,7 @@
 </cfoutput>
 
 <h1>History:</h1>
-<cfquery name = "changes_list" datasource="getit">
+<cfquery name = "changes_list" datasource="mygetit">
     select change_id, bug_id, changer_id, change_action, change_comment, change_date
     from changes
 </cfquery>

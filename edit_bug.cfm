@@ -10,7 +10,7 @@
 
 <body>
 
-    <cfquery name="bugs_list" datasource="getit">
+    <cfquery name="bugs_list" datasource="mygetit">
         select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, username as bug_creator
         from bugs
         left join users
@@ -25,7 +25,7 @@
     </cfoutput>
 
     <h2>History:</h2>
-    <cfquery name="changes_list" datasource="getit">
+    <cfquery name="changes_list" datasource="mygetit">
         select * from changes
         inner join users
         on changes.changer_id=users.user_id
