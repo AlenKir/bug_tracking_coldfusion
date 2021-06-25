@@ -29,7 +29,7 @@
 
 <!--[![Product Name Screen Shot][product-screenshot]](https://github.com/AlenKir/gi_cf/tree/main/screenshots_for_readme/bugs_list.png)-->
 
-![bug list screenshot](https://github.com/AlenKir/gi_cf/screenshots_for_readme/bugs_list.png?raw=true)
+![screenshot](./screenshots_for_readme/bug_list.png)
 
 ### Built With
 
