@@ -26,11 +26,25 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-<!--[![Product Name Screen Shot][product-screenshot]](https://github.com/AlenKir/gi_cf/tree/main/screenshots_for_readme/bugs_list.png)-->
-
+<p align="center">
 <img src="https://github.com/AlenKir/gi_cf/blob/ea3c2ea3b132adbae37b90a43eaa2cef8d6fef4d/screenshots_for_readme/bugs_list.png"
-       alt="screenshot" align="middle" height="200">
+       alt="screenshot" height="400">
+</p>
+       
+<p>
+    This system allows you to:
+* log in
+* save bugs, edit them
+* change bugs' status (New/Open/Solved/Closed)
+* do a limited search among them
+* sort bugs by their urgency & criticality
+* view history: full and for an individual bug
+</p>
+
+<p align="center">
+<img src="https://github.com/AlenKir/gi_cf/blob/ea3c2ea3b132adbae37b90a43eaa2cef8d6fef4d/screenshots_for_readme/edit.png"
+       alt="screenshot" height="400">
+</p>
 
 ### Built With
 
