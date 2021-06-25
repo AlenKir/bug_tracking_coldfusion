@@ -42,7 +42,7 @@
 </p>
 
 <p align="center">
-<img src="https://github.com/AlenKir/gi_cf/blob/ea3c2ea3b132adbae37b90a43eaa2cef8d6fef4d/screenshots_for_readme/edit.png"
+<img src="https://github.com/AlenKir/gi_cf/blob/83f4837839933a8bb15309cf65a57bdfd8dabaa5/screenshots_for_readme/edit.png"
        alt="screenshot" height="400">
 </p>
 
