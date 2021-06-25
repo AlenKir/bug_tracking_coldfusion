@@ -27,10 +27,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/AlenKir/gi_cf/tree/main/screenshots_for_readme/bugs_list.png)
+<!--[![Product Name Screen Shot][product-screenshot]](https://github.com/AlenKir/gi_cf/tree/main/screenshots_for_readme/bugs_list.png)-->
 
-
-
+![bug list screenshot](https://github.com/AlenKir/gi_cf/screenshots_for_readme/bugs_list.png?raw=true)
 
 ### Built With
 
