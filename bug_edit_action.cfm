@@ -45,21 +45,21 @@
             </p>
         </cfoutput>
     
-    <cfquery name="find_changer_id" datasource="mygetit">
+    <cfquery name="find_changer_id" datasource="getit">
         select user_id from users where username='#EmployeeID#'
     </cfquery>
     <cfoutput query="find_changer_id">
         <cfset changer_id=#find_changer_id.user_id#>
     </cfoutput>
     
-    <cfquery name="find_creator_id" datasource="mygetit">
+    <cfquery name="find_creator_id" datasource="getit">
         select user_id from users where username='#form.fld_creator#'
     </cfquery>
     <cfoutput query="find_creator_id">
         <cfset creator_id=#find_creator_id.user_id#>
     </cfoutput>
 
-    <cfquery name="add_bug" datasource="mygetit">
+    <cfquery name="add_bug" datasource="getit">
         update bugs set bug_title='#form.fld_description#',
         bug_details='#form.fld_details#', creator_id=#creator_id#,
         bug_status='#form.fld_status#', bug_priority='#form.fld_priority#',
@@ -67,7 +67,7 @@
         where bug_id=#form.fld_bug_id#
     </cfquery>
 
-    <cfquery name="change" datasource="mygetit">
+    <cfquery name="change" datasource="getit">
         INSERT INTO changes (bug_id, changer_id, change_date, change_action, change_comment) VALUES (#form.fld_bug_id#, #changer_id#, '2021-06-23', '#form.fld_status#', '#form.fld_comment#');
     </cfquery>
 
