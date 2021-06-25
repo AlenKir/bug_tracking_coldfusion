@@ -18,7 +18,6 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -40,3 +39,6 @@ Here's a blank template to get started:
 * ColdFusion
 * HTML
 * CSS
+
+## Contact
+Please contact me about issues and suggestions at kirillova.alena@gmail.com.
