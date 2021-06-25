@@ -11,7 +11,7 @@
 <body>
 
     <h1>History of changes:</h1>
-    <cfquery name="changes_list" datasource="mygetit">
+    <cfquery name="changes_list" datasource="getit">
         select * from changes
         inner join bugs
         on changes.bug_id=bugs.bug_id

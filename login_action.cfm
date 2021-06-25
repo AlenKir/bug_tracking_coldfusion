@@ -17,7 +17,7 @@
     <!--- Else, If the username and password ARE present, the login is processed. --->    
     <cfelse>
         <!--- Query gets the information from the database matching the login provided. --->
-            <CFQUERY NAME="login" DATASOURCE="mygetit">
+            <CFQUERY NAME="login" datasource="getit">
             SELECT      user_id, username, user_password, firstlastname as Role
             FROM         users
             WHERE        (username = <cfqueryparam value="#Form.Username#" cfsqltype="CF_SQL_VARCHAR"> 

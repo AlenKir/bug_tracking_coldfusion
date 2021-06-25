@@ -1,4 +1,4 @@
--- Database: mygetit
+-- Database: getit
 	
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS bugs CASCADE;
@@ -18,8 +18,8 @@ CREATE TABLE bugs (
 	bug_details TEXT,
 	creator_id INT,
 	bug_status INT NOT NULL,
-	bug_urgency INT NOT NULL,
-	bug_crit INT NOT NULL,
+	bug_priority INT NOT NULL,
+	bug_severity INT NOT NULL,
 	bug_whenfound DATE,
 	
 	PRIMARY KEY(bug_id),
@@ -54,7 +54,7 @@ VALUES
 
 INSERT INTO bugs 
 (bug_title, bug_details, creator_id, bug_status, 
- bug_urgency, bug_crit, bug_whenfound)
+ bug_priority, bug_severity, bug_whenfound)
 VALUES ('testbug', 'details', 1, 0, 0, 0, '2021-06-22');
 
 INSERT INTO changes 

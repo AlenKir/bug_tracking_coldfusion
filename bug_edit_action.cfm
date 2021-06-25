@@ -31,10 +31,10 @@
                 Status: #form.fld_status#.
             </p>
             <p>
-                Urgent? #form.fld_urgency#.
+                Priority #form.fld_priority#.
             </p>
             <p>
-                Critical? #form.fld_crit#.
+                Severity #form.fld_severity#.
             </p>
             <p>
                 Created by: #form.fld_creator#.
@@ -62,8 +62,8 @@
     <cfquery name="add_bug" datasource="mygetit">
         update bugs set bug_title='#form.fld_description#',
         bug_details='#form.fld_details#', creator_id=#creator_id#,
-        bug_status='#form.fld_status#', bug_urgency='#form.fld_urgency#',
-        bug_crit='#form.fld_crit#', bug_whenfound='2021-06-23'
+        bug_status='#form.fld_status#', bug_priority='#form.fld_priority#',
+        bug_severity='#form.fld_severity#', bug_whenfound='2021-06-23'
         where bug_id=#form.fld_bug_id#
     </cfquery>
 

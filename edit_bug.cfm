@@ -10,8 +10,8 @@
 
 <body>
 
-    <cfquery name="bugs_list" datasource="mygetit">
-        select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, username as bug_creator
+    <cfquery name="bugs_list" datasource="getit">
+        select bug_id, bug_title, bug_details, creator_id, bug_status, bug_priority, bug_severity, username as bug_creator
         from bugs
         left join users
         on creator_id = users.user_id
@@ -19,13 +19,13 @@
     </cfquery>
 
     <cfoutput>
-        <strong>Short Description:</strong> #bugs_list.bug_title#, <br> <strong>Details:</strong> #bugs_list.bug_details#, <br> <strong>Status:</strong> #bugs_list.bug_status#, <strong>Urgency:</strong> #bugs_list.bug_urgency#, <strong>Cricicality: </strong>#bugs_list.bug_crit#<br>
+        <strong>Short Description:</strong> #bugs_list.bug_title#, <br> <strong>Details:</strong> #bugs_list.bug_details#, <br> <strong>Status:</strong> #bugs_list.bug_status#, <strong>Priority:</strong> #bugs_list.bug_priority#, <strong>Severity: </strong>#bugs_list.bug_severity#<br>
         <strong>Added by: </strong>#bugs_list.bug_creator#
         <hr>
     </cfoutput>
 
     <h2>History:</h2>
-    <cfquery name="changes_list" datasource="mygetit">
+    <cfquery name="changes_list" datasource="getit">
         select * from changes
         inner join users
         on changes.changer_id=users.user_id
@@ -61,12 +61,12 @@
                 <input type="text" name="fld_status" id="fld_status" value="#bugs_list.bug_status#" />
             </p>
             <p>
-                <label for="fld_urgency">Urgent? (Very, Urgent, Non-urgent, No)</label>
-                <input type="text" name="fld_urgency" id="fld_urgency" value="#bugs_list.bug_urgency#" />
+                <label for="fld_priority">Priority (0 - High, 1 - Medium, 2 - Low)</label>
+                <input type="text" name="fld_priority" id="fld_priority" value="#bugs_list.bug_priority#" />
             </p>
             <p>
-                <label for="fld_crit">Critical? (Crisis, Critical, Non-critical, Request)</label>
-                <input type="text" name="fld_crit" id="fld_crit" value="#bugs_list.bug_crit#" />
+                <label for="fld_severity">Severity (0 - Blocker, 1 - Critical, 2 - Major, 3 - Minor, 4 - Trivial)</label>
+                <input type="text" name="fld_severity" id="fld_severity" value="#bugs_list.bug_severity#" />
             </p>
             
             

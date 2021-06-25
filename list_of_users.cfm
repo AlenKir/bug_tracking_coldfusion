@@ -3,7 +3,7 @@
 </form>
 
 <h1>Users:</h1>
-<cfquery name="users_list" datasource="mygetit">
+<cfquery name="users_list" datasource="getit">
     select user_id, username, firstlastname, user_password
     from users
 </cfquery>

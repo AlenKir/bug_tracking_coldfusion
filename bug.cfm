@@ -24,12 +24,12 @@
             <input type="text" name="fld_status" id="fld_status" />
         </p>
         <p>
-            <label for="fld_urgency">Urgent? (0 - Very, 1 - Urgent, 2 - Non-urgent, 3 - No)</label>
-            <input type="text" name="fld_urgency" id="fld_urgency" />
+            <label for="fld_priority">Priority (0 - High, 1 - Medium, 2 - Low)</label>
+            <input type="text" name="fld_priority" id="fld_priority" />
         </p>
         <p>
-            <label for="fld_crit">Critical? (0 - Crisis, 1 - Critical, 2 - Non-critical, 3 - Request)</label>
-            <input type="text" name="fld_crit" id="fld_crit" />
+            <label for="fld_severity">Severity (0 - Blocker, 1 - Critical, 2 - Major, 3 - Minor, 4 - Trivial)</label>
+            <input type="text" name="fld_severity" id="fld_severity" />
         </p>
         <p>
             <cfset DateToday=now()>

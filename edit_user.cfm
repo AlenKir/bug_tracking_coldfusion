@@ -6,7 +6,7 @@
         </cfoutput>
 
 
-        <cfquery name="get_user" datasource="mygetit">
+        <cfquery name="get_user" datasource="getit">
             select user_id, username, firstlastname, user_password
             from users
         </cfquery>

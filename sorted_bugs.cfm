@@ -20,30 +20,30 @@
 
     <cfswitch expression="#form.fld_sortby#">
         <cfcase value="status">
-            <cfquery name="bugs_list" datasource="mygetit">
-                select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, username as bug_creator
+            <cfquery name="bugs_list" datasource="getit">
+                select bug_id, bug_title, bug_details, creator_id, bug_status, bug_priority, bug_severity, username as bug_creator
                 from bugs
                 left join users
                 on creator_id=users.user_id
                 order by bug_status ASC
             </cfquery>
         </cfcase>
-        <cfcase value="urgency">
-            <cfquery name="bugs_list" datasource="mygetit">
-                select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, username as bug_creator
+        <cfcase value="priority">
+            <cfquery name="bugs_list" datasource="getit">
+                select bug_id, bug_title, bug_details, creator_id, bug_status, bug_priority, bug_severity, username as bug_creator
                 from bugs
                 left join users
                 on creator_id=users.user_id
-                order by bug_urgency ASC
+                order by bug_priority ASC
             </cfquery>
         </cfcase>
-        <cfcase value="criticality">
-            <cfquery name="bugs_list" datasource="mygetit">
-                select bug_id, bug_title, bug_details, creator_id, bug_status, bug_urgency, bug_crit, username as bug_creator
+        <cfcase value="Severity">
+            <cfquery name="bugs_list" datasource="getit">
+                select bug_id, bug_title, bug_details, creator_id, bug_status, bug_priority, bug_severity, username as bug_creator
                 from bugs
                 left join users
                 on creator_id=users.user_id
-                order by bug_crit ASC
+                order by bug_severity ASC
             </cfquery>
         </cfcase>
 
@@ -65,22 +65,22 @@
             <cfdefaultcase>Wrong status.</cfdefaultcase>
         </cfswitch>,
 
-        <strong>Urgency:</strong>
-        <cfswitch expression="#bugs_list.bug_urgency#">
-            <cfcase value="0">Very</cfcase>
-            <cfcase value="1">Urgent</cfcase>
-            <cfcase value="2">Non-urgent</cfcase>
-            <cfcase value="3">Not at all</cfcase>
-            <cfdefaultcase>Wrong urgency.</cfdefaultcase>
+        <strong>Priority:</strong>
+        <cfswitch expression="#bugs_list.bug_priority#">
+            <cfcase value="0">High</cfcase>
+            <cfcase value="1">Medium</cfcase>
+            <cfcase value="2">Low</cfcase>
+            <cfdefaultcase>Wrong priority.</cfdefaultcase>
         </cfswitch>,
 
-        <strong>Criticality:</strong>
-        <cfswitch expression="#bugs_list.bug_crit#">
-            <cfcase value="0">Crisis</cfcase>
+        <strong>Severity:</strong>
+        <cfswitch expression="#bugs_list.bug_severity#">
+            <cfcase value="0">Blocker</cfcase>
             <cfcase value="1">Critical</cfcase>
-            <cfcase value="2">Non-critical</cfcase>
-            <cfcase value="3">Request</cfcase>
-            <cfdefaultcase>Wrong criticality.</cfdefaultcase>
+            <cfcase value="2">Major</cfcase>
+            <cfcase value="3">Minor</cfcase>
+            <cfcase value="4">Trivial</cfcase>
+            <cfdefaultcase>Wrong Severity.</cfdefaultcase>
         </cfswitch><br>
 
         <strong>Added by: </strong>#bugs_list.bug_creator#
