@@ -31,15 +31,13 @@
        alt="screenshot" height="400">
 </p>
        
-<p>
-    This system allows you to:
+This system allows you to:
 * log in
 * save bugs, edit them
 * change bugs' status (New/Open/Solved/Closed)
 * do a limited search among them
 * sort bugs by their urgency & criticality
 * view history: full and for an individual bug
-</p>
 
 <p align="center">
 <img src="https://github.com/AlenKir/gi_cf/blob/83f4837839933a8bb15309cf65a57bdfd8dabaa5/screenshots_for_readme/edit.png"
