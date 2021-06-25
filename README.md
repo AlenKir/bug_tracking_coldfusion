@@ -27,8 +27,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <p align="center">
-<img src="https://github.com/AlenKir/gi_cf/blob/ea3c2ea3b132adbae37b90a43eaa2cef8d6fef4d/screenshots_for_readme/bugs_list.png"
-       alt="screenshot" height="400">
+<img src="https://github.com/AlenKir/bug_tracking_coldfusion/blob/f80acb92fa67ece0ea920ef83027d1c961b8ab69/screenshots_for_readme/bugs_list.png"
+       alt="list of bugs" height="400">
 </p>
        
 This system allows you to:
@@ -40,8 +40,8 @@ This system allows you to:
 * view history: full and for an individual bug
 
 <p align="center">
-<img src="https://github.com/AlenKir/gi_cf/blob/83f4837839933a8bb15309cf65a57bdfd8dabaa5/screenshots_for_readme/edit.png"
-       alt="screenshot" height="400">
+<img src="https://github.com/AlenKir/bug_tracking_coldfusion/blob/f80acb92fa67ece0ea920ef83027d1c961b8ab69/screenshots_for_readme/edit.png"
+       alt="editing bug" height="400">
 </p>
 
 ### Built With
