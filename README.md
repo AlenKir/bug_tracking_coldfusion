@@ -37,6 +37,6 @@ Here's a blank template to get started:
 
 ### Built With
 
-* [ColdFusion]()
-* [HTML]()
-* [CSS]()
+* ColdFusion
+* HTML
+* CSS
