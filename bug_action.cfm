@@ -15,7 +15,7 @@
             <p>
                 <cfset DateToday=now()>
                     <cfscript>
-                        dateformat= DateFormat(#DateToday#)
+                        dateformat = DateFormat(#DateToday#, "yyyy-mm-dd")
                     </cfscript>
 
                     <cfoutput>
@@ -49,7 +49,7 @@
     </cfoutput>
 
     <cfquery name="add_bug" datasource="getit">
-        insert into bugs (bug_title, bug_details, creator_id, bug_status, bug_priority, bug_severity, bug_whenfound) values ('#form.fld_description#', '#form.fld_details#', #u_id#, '#form.fld_status#', '#form.fld_priority#', '#form.fld_severity#', '2021-06-23')
+        insert into bugs (bug_title, bug_details, creator_id, bug_status, bug_priority, bug_severity, bug_whenfound) values ('#form.fld_description#', '#form.fld_details#', #u_id#, '#form.fld_status#', '#form.fld_priority#', '#form.fld_severity#', '#dateformat#')
     </cfquery>
 
     <form action="list_of_bugs.cfm" method="get">

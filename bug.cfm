@@ -34,7 +34,7 @@
         <p>
             <cfset DateToday=now()>
                 <cfscript>
-                    dateformat = DateFormat(#DateToday#)
+                    dateformat = DateFormat(#DateToday#, "yyyy-mm-dd")
                 </cfscript>
 
                 <cfoutput>

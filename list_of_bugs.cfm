@@ -29,7 +29,7 @@
     <hr>
 
     <cfquery name="bugs_list" datasource="getit">
-        select bug_id, bug_title, bug_details, creator_id, bug_status, bug_priority, bug_severity, username as bug_creator
+        select bug_id, bug_title, bug_details, creator_id, bug_status, bug_priority, bug_severity, username as bug_creator, bug_whenfound
         from bugs
         left join users
         on creator_id=users.user_id
@@ -67,7 +67,9 @@
             <cfdefaultcase>Wrong Severity.</cfdefaultcase>
         </cfswitch><br>
 
-        <strong>Added by: </strong>#bugs_list.bug_creator#
+        <strong>Added by: </strong>#bugs_list.bug_creator# <br/>
+        
+        <strong>Date: </strong>#bugs_list.bug_whenfound#
 
         <form action="edit_bug.cfm" method="post">
             <button name="fld_id" value="#bugs_list.bug_id#">EDIT</button>
