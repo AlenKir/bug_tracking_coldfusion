@@ -34,18 +34,28 @@
         <p>
             <cfset DateToday=now()>
                 <cfscript>
-                    dateformat1= DateFormat(#DateToday#,"e")
-                    dateformat= DateFormat(#DateToday#)
+                    dateformat = DateFormat(#DateToday#)
                 </cfscript>
 
                 <cfoutput>
                     Date: #dateformat#
                 </cfoutput>
+                
+                <div id="date2format">
+                    
+                </div>
         </p>
         <p>
             <input type="submit" name="fld_submitBugForm" id="fld_submitBugForm" value="Submit" />
         </p>
     </form>
+    <script>
+        function format(d) {
+            let msec = Date.parse(d);
+            const d = new Date(msec);
+            document.getElementById("date2format").innerHTML = "Date: " + d;
+        }
+    </script>
 </body>
 
 </html>
