@@ -36,7 +36,7 @@ This system allows you to:
 * save bugs, edit them
 * change bugs' status (New/Open/Solved/Closed)
 * do a limited search among them
-* sort bugs by their urgency & criticality
+* sort bugs by their priority & severity
 * view history: full and for an individual bug
 
 <p align="center">
