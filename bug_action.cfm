@@ -42,14 +42,24 @@
     
     <cfset EmployeeID = ListFirst(GetAuthUser())>
     <cfquery name="find_user_id" datasource="getit">
-        select user_id from users where username='#EmployeeID#'
+        select user_id from users where username=<cfqueryparam value="#EmployeeID#" cfsqltype="cf_sql_varchar" maxlength="10">
     </cfquery>
     <cfoutput query="find_user_id">
         <cfset u_id=#find_user_id.user_id#>
     </cfoutput>
 
     <cfquery name="add_bug" datasource="getit">
-        insert into bugs (bug_title, bug_details, creator_id, bug_status, bug_priority, bug_severity, bug_whenfound) values ('#form.fld_description#', '#form.fld_details#', #u_id#, '#form.fld_status#', '#form.fld_priority#', '#form.fld_severity#', '#dateformat#')
+        insert into bugs (bug_title, bug_details, creator_id, bug_status, bug_priority, bug_severity, bug_whenfound) 
+        values 
+        (
+        <cfqueryparam value="#form.fld_description#" cfsqltype="cf_sql_varchar" maxlength="50">,
+        <cfqueryparam value="#form.fld_details#" cfsqltype="cf_sql_varchar" maxlength="250">,
+        <cfqueryparam value="#u_id#" cfsqltype="cf_sql_integer">,
+        <cfqueryparam value="#form.fld_status#" cfsqltype="cf_sql_integer">,
+        <cfqueryparam value="#form.fld_priority#" cfsqltype="cf_sql_integer">,
+        <cfqueryparam value="#form.fld_severity#" cfsqltype="cf_sql_integer">,
+        <cfqueryparam value="#dateformat#" cfsqltype="cf_sql_date">
+        )
     </cfquery>
 
     <form action="list_of_bugs.cfm" method="get">

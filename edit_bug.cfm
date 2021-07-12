@@ -15,7 +15,7 @@
         from bugs
         left join users
         on creator_id = users.user_id
-        where bug_id=#form.fld_id#
+        where bug_id=<cfqueryparam value="#form.fld_id#" cfsqltype="cf_sql_integer">
     </cfquery>
 
     <cfoutput>
@@ -29,7 +29,7 @@
         select * from changes
         inner join users
         on changes.changer_id=users.user_id
-        where bug_id=#form.fld_id#
+        where bug_id=<cfqueryparam value="#form.fld_id#" cfsqltype="cf_sql_integer">
     </cfquery>
 
     <cfoutput query="changes_list">
@@ -57,7 +57,7 @@
             </p>
 
             <p>
-                <label for="fld_status">Updated Status (New/Open/Solved/Closed):</label>
+                <label for="fld_status">Updated Status (0 - New, 1 - Open, 2 - Solved, 3 - Closed):</label>
                 <input type="text" name="fld_status" id="fld_status" value="#bugs_list.bug_status#" />
             </p>
             <p>

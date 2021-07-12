@@ -21,11 +21,11 @@
         left join users
         on creator_id=users.user_id
         where 
-        position('#form.fld_search#' in bug_title)!=0
+        position(<cfqueryparam value="#form.fld_search#" cfsqltype="cf_sql_varchar" maxlength="50"> in bug_title)!=0
         OR
-        position('#form.fld_search#' in bug_details)!=0
+        position(<cfqueryparam value="#form.fld_search#" cfsqltype="cf_sql_varchar" maxlength="50"> in bug_details)!=0
         OR
-        position('#form.fld_search#' in username)!=0
+        position(<cfqueryparam value="#form.fld_search#" cfsqltype="cf_sql_varchar" maxlength="50"> in username)!=0
     </cfquery>
 
     <cfoutput query="bugs_list">
